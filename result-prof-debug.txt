@@ -1,0 +1,525 @@
+Statistical profiling result from isolate-0x58c1610-71916-v8.log, (821 ticks, 1 unaccounted, 0 excluded).
+
+ [Shared libraries]:
+   ticks  total  nonlib   name
+    579   70.5%          /home/laura/.nvm/versions/node/v16.15.1/bin/node
+     23    2.8%          /usr/lib/x86_64-linux-gnu/libc-2.31.so
+      6    0.7%          /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.28
+      1    0.1%          [vdso]
+
+ [JavaScript]:
+   ticks  total  nonlib   name
+      2    0.2%    0.9%  LazyCompile: *normalizeString node:path:66:25
+      1    0.1%    0.5%  Function: ^stylizeWithColor node:internal/util/inspect:540:26
+      1    0.1%    0.5%  Function: ^restore /home/laura/Documentos/coder/resueltos/16-logs/node_modules/express/lib/router/index.js:631:17
+      1    0.1%    0.5%  Function: ^realpathSync node:fs:2425:22
+      1    0.1%    0.5%  Function: ^readPackageScope node:internal/modules/cjs/loader:321:26
+      1    0.1%    0.5%  Function: ^isFileType node:fs:205:20
+      1    0.1%    0.5%  Function: ^afterWriteTick node:internal/streams/writable:482:24
+      1    0.1%    0.5%  Function: ^_unrefTimer node:net:431:52
+      1    0.1%    0.5%  Function: ^Module._findPath node:internal/modules/cjs/loader:494:28
+      1    0.1%    0.5%  Function: ^<anonymous> node:internal/validators:73:3
+
+ [C++]:
+   ticks  total  nonlib   name
+     63    7.7%   29.7%  epoll_pwait
+     55    6.7%   25.9%  __write
+     30    3.7%   14.2%  fwrite
+      7    0.9%    3.3%  _IO_file_xsputn
+      5    0.6%    2.4%  std::basic_ostream<char, std::char_traits<char> >& std::__ostream_insert<char, std::char_traits<char> >(std::basic_ostream<char, std::char_traits<char> >&, char const*, long)
+      5    0.6%    2.4%  __lll_lock_wait
+      5    0.6%    2.4%  __GI___pthread_mutex_lock
+      4    0.5%    1.9%  __GI___pthread_mutex_unlock
+      3    0.4%    1.4%  std::ostream::sentry::sentry(std::ostream&)
+      3    0.4%    1.4%  cfree
+      3    0.4%    1.4%  __mprotect
+      3    0.4%    1.4%  __libc_malloc
+      2    0.2%    0.9%  operator delete(void*)
+      2    0.2%    0.9%  __GI___pthread_rwlock_wrlock
+      1    0.1%    0.5%  std::ostream& std::ostream::_M_insert<unsigned long>(unsigned long)
+      1    0.1%    0.5%  std::ostream& std::ostream::_M_insert<long>(long)
+      1    0.1%    0.5%  std::num_put<char, std::ostreambuf_iterator<char, std::char_traits<char> > >::do_put(std::ostreambuf_iterator<char, std::char_traits<char> >, std::ios_base&, char, unsigned long) const
+      1    0.1%    0.5%  std::_Rb_tree_decrement(std::_Rb_tree_node_base*)
+      1    0.1%    0.5%  fputc
+      1    0.1%    0.5%  fflush
+      1    0.1%    0.5%  __vsnprintf
+      1    0.1%    0.5%  __pthread_cond_wait
+      1    0.1%    0.5%  __mmap
+      1    0.1%    0.5%  _IO_file_sync
+
+ [Summary]:
+   ticks  total  nonlib   name
+     11    1.3%    5.2%  JavaScript
+    200   24.4%   94.3%  C++
+     40    4.9%   18.9%  GC
+    609   74.2%          Shared libraries
+      1    0.1%          Unaccounted
+
+ [C++ entry points]:
+   ticks    cpp   total   name
+     44   41.9%    5.4%  __write
+     26   24.8%    3.2%  fwrite
+      7    6.7%    0.9%  _IO_file_xsputn
+      5    4.8%    0.6%  std::basic_ostream<char, std::char_traits<char> >& std::__ostream_insert<char, std::char_traits<char> >(std::basic_ostream<char, std::char_traits<char> >&, char const*, long)
+      4    3.8%    0.5%  __GI___pthread_mutex_lock
+      3    2.9%    0.4%  std::ostream::sentry::sentry(std::ostream&)
+      3    2.9%    0.4%  __libc_malloc
+      2    1.9%    0.2%  operator delete(void*)
+      2    1.9%    0.2%  __GI___pthread_rwlock_wrlock
+      1    1.0%    0.1%  std::ostream& std::ostream::_M_insert<long>(long)
+      1    1.0%    0.1%  std::num_put<char, std::ostreambuf_iterator<char, std::char_traits<char> > >::do_put(std::ostreambuf_iterator<char, std::char_traits<char> >, std::ios_base&, char, unsigned long) const
+      1    1.0%    0.1%  fputc
+      1    1.0%    0.1%  fflush
+      1    1.0%    0.1%  cfree
+      1    1.0%    0.1%  __vsnprintf
+      1    1.0%    0.1%  __mprotect
+      1    1.0%    0.1%  __GI___pthread_mutex_unlock
+      1    1.0%    0.1%  _IO_file_sync
+
+ [Bottom up (heavy) profile]:
+  Note: percentage shows a share of a particular caller in the total
+  amount of its parent calls.
+  Callers occupying less than 1.0% are not shown.
+
+   ticks parent  name
+    579   70.5%  /home/laura/.nvm/versions/node/v16.15.1/bin/node
+    436   75.3%    /home/laura/.nvm/versions/node/v16.15.1/bin/node
+     99   22.7%      Function: ^compileFunction node:vm:308:25
+     93   93.9%        Function: ^wrapSafe node:internal/modules/cjs/loader:1017:18
+     92   98.9%          Function: ^Module._compile node:internal/modules/cjs/loader:1059:37
+     74   80.4%            Function: ^Module._extensions..js node:internal/modules/cjs/loader:1114:37
+     18   19.6%            LazyCompile: ~Module._extensions..js node:internal/modules/cjs/loader:1114:37
+      1    1.1%          LazyCompile: ~Module._compile node:internal/modules/cjs/loader:1059:37
+      1  100.0%            LazyCompile: ~Module._extensions..js node:internal/modules/cjs/loader:1114:37
+      6    6.1%        LazyCompile: ~wrapSafe node:internal/modules/cjs/loader:1017:18
+      6  100.0%          LazyCompile: ~Module._compile node:internal/modules/cjs/loader:1059:37
+      6  100.0%            LazyCompile: ~Module._extensions..js node:internal/modules/cjs/loader:1114:37
+     50   11.5%      Function: ^compileForInternalLoader node:internal/bootstrap/loaders:299:27
+     44   88.0%        Function: ^nativeModuleRequire node:internal/bootstrap/loaders:332:29
+     10   22.7%          Function: ~<anonymous> node:crypto:1:1
+     10  100.0%            Function: ^compileForInternalLoader node:internal/bootstrap/loaders:299:27
+      6   13.6%          Function: ~<anonymous> node:http:1:1
+      6  100.0%            Function: ^compileForInternalLoader node:internal/bootstrap/loaders:299:27
+      4    9.1%          Function: ~<anonymous> node:internal/cluster/primary:1:1
+      4  100.0%            Function: ^compileForInternalLoader node:internal/bootstrap/loaders:299:27
+      3    6.8%          Function: ~<anonymous> node:internal/child_process:1:1
+      3  100.0%            Function: ^compileForInternalLoader node:internal/bootstrap/loaders:299:27
+      3    6.8%          Function: ~<anonymous> node:child_process:1:1
+      3  100.0%            Function: ^compileForInternalLoader node:internal/bootstrap/loaders:299:27
+      3    6.8%          Function: ~<anonymous> node:_http_client:1:1
+      3  100.0%            Function: ^compileForInternalLoader node:internal/bootstrap/loaders:299:27
+      2    4.5%          LazyCompile: ~lazyRequire node:internal/crypto/util:67:21
+      2  100.0%            LazyCompile: ~get node:crypto:287:8
+      2    4.5%          LazyCompile: ~lazyLoadStreams node:fs:2858:25
+      2  100.0%            LazyCompile: ~get ReadStream node:fs:3001:17
+      2    4.5%          LazyCompile: ~initCJSParse node:internal/modules/esm/translators:58:28
+      2  100.0%            LazyCompile: ~commonjsStrategy node:internal/modules/esm/translators:148:60
+      2    4.5%          Function: ~<anonymous> node:internal/crypto/hkdf:1:1
+      2  100.0%            Function: ^compileForInternalLoader node:internal/bootstrap/loaders:299:27
+      2    4.5%          Function: ~<anonymous> node:_http_common:1:1
+      2  100.0%            Function: ^compileForInternalLoader node:internal/bootstrap/loaders:299:27
+      1    2.3%          LazyCompile: ~initializeCJSLoader node:internal/bootstrap/pre_execution:477:29
+      1  100.0%            LazyCompile: ~prepareMainThreadExecution node:internal/bootstrap/pre_execution:28:36
+      1    2.3%          Function: ~<anonymous> node:tty:1:1
+      1  100.0%            Function: ^compileForInternalLoader node:internal/bootstrap/loaders:299:27
+      1    2.3%          Function: ~<anonymous> node:internal/crypto/pbkdf2:1:1
+      1  100.0%            Function: ^compileForInternalLoader node:internal/bootstrap/loaders:299:27
+      1    2.3%          Function: ~<anonymous> node:cluster:1:1
+      1  100.0%            Function: ^compileForInternalLoader node:internal/bootstrap/loaders:299:27
+      1    2.3%          Function: ~<anonymous> node:_http_outgoing:1:1
+      1  100.0%            Function: ^compileForInternalLoader node:internal/bootstrap/loaders:299:27
+      4    8.0%        Function: ^compileForPublicLoader node:internal/bootstrap/loaders:246:25
+      4  100.0%          Function: ^loadNativeModule node:internal/modules/cjs/helpers:44:26
+      4  100.0%            Function: ^Module._load node:internal/modules/cjs/loader:757:24
+      2    4.0%        LazyCompile: ~compileForPublicLoader node:internal/bootstrap/loaders:246:25
+      1   50.0%          LazyCompile: ~loadNativeModule node:internal/modules/cjs/helpers:44:26
+      1  100.0%            LazyCompile: ~builtinStrategy node:internal/modules/esm/translators:254:58
+      1   50.0%          Function: ^loadNativeModule node:internal/modules/cjs/helpers:44:26
+      1  100.0%            Function: ^Module._load node:internal/modules/cjs/loader:757:24
+     36    8.3%      LazyCompile: ~compileForInternalLoader node:internal/bootstrap/loaders:299:27
+     36  100.0%        LazyCompile: ~nativeModuleRequire node:internal/bootstrap/loaders:332:29
+      6   16.7%          Function: ~<anonymous> node:internal/modules/esm/fetch_module:1:1
+      6  100.0%            LazyCompile: ~compileForInternalLoader node:internal/bootstrap/loaders:299:27
+      5   13.9%          Function: ~<anonymous> node:internal/modules/esm/loader:1:1
+      5  100.0%            LazyCompile: ~compileForInternalLoader node:internal/bootstrap/loaders:299:27
+      4   11.1%          Function: ~<anonymous> node:internal/process/esm_loader:1:1
+      4  100.0%            LazyCompile: ~compileForInternalLoader node:internal/bootstrap/loaders:299:27
+      4   11.1%          Function: ~<anonymous> node:internal/modules/esm/get_source:1:1
+      4  100.0%            LazyCompile: ~compileForInternalLoader node:internal/bootstrap/loaders:299:27
+      3    8.3%          LazyCompile: ~initializeCJSLoader node:internal/bootstrap/pre_execution:477:29
+      3  100.0%            LazyCompile: ~prepareMainThreadExecution node:internal/bootstrap/pre_execution:28:36
+      2    5.6%          Function: ~<anonymous> node:net:1:1
+      2  100.0%            LazyCompile: ~compileForInternalLoader node:internal/bootstrap/loaders:299:27
+      2    5.6%          Function: ~<anonymous> node:internal/modules/esm/module_map:1:1
+      2  100.0%            LazyCompile: ~compileForInternalLoader node:internal/bootstrap/loaders:299:27
+      2    5.6%          Function: ~<anonymous> node:internal/modules/esm/get_format:1:1
+      2  100.0%            LazyCompile: ~compileForInternalLoader node:internal/bootstrap/loaders:299:27
+      1    2.8%          LazyCompile: ~initializeSourceMapsHandlers node:internal/bootstrap/pre_execution:516:38
+      1  100.0%            LazyCompile: ~prepareMainThreadExecution node:internal/bootstrap/pre_execution:28:36
+      1    2.8%          LazyCompile: ~initializeReport node:internal/bootstrap/pre_execution:238:26
+      1  100.0%            LazyCompile: ~prepareMainThreadExecution node:internal/bootstrap/pre_execution:28:36
+      1    2.8%          Function: ~<anonymous> node:internal/source_map/source_map_cache:1:1
+      1  100.0%            LazyCompile: ~compileForInternalLoader node:internal/bootstrap/loaders:299:27
+      1    2.8%          Function: ~<anonymous> node:internal/modules/esm/translators:1:1
+      1  100.0%            LazyCompile: ~compileForInternalLoader node:internal/bootstrap/loaders:299:27
+      1    2.8%          Function: ~<anonymous> node:internal/modules/esm/load:1:1
+      1  100.0%            LazyCompile: ~compileForInternalLoader node:internal/bootstrap/loaders:299:27
+      1    2.8%          Function: ~<anonymous> node:internal/modules/cjs/loader:1:1
+      1  100.0%            LazyCompile: ~compileForInternalLoader node:internal/bootstrap/loaders:299:27
+      1    2.8%          Function: ~<anonymous> node:internal/main/run_main_module:1:1
+      1    2.8%          Function: ~<anonymous> node:internal/fs/promises:1:1
+      1  100.0%            LazyCompile: ~compileForInternalLoader node:internal/bootstrap/loaders:299:27
+     16    3.7%      LazyCompile: ~<anonymous> file:///home/laura/Documentos/coder/resueltos/16-logs/server.js:30:35
+     16  100.0%        LazyCompile: ~onceWrapper node:events:636:21
+     16  100.0%          LazyCompile: ~emit node:events:475:44
+     16  100.0%            LazyCompile: ~emitListeningNT node:net:1403:25
+     16    3.7%      /home/laura/.nvm/versions/node/v16.15.1/bin/node
+      3   18.8%        LazyCompile: ~resolvePackageTargetString node:internal/modules/esm/resolve:507:36
+      3  100.0%          LazyCompile: ~resolvePackageTarget node:internal/modules/esm/resolve:572:30
+      3  100.0%            LazyCompile: ~resolvePackageTarget node:internal/modules/esm/resolve:572:30
+      1    6.3%        LazyCompile: ~removeColors node:internal/util:76:22
+      1  100.0%          LazyCompile: ~isBelowBreakLength node:internal/util/inspect:1878:28
+      1  100.0%            LazyCompile: ~reduceToSingleString node:internal/util/inspect:1902:30
+      1    6.3%        LazyCompile: ~promisify node:internal/util:324:19
+      1  100.0%          Function: ~<anonymous> node:internal/fs/promises:1:1
+      1  100.0%            LazyCompile: ~compileForInternalLoader node:internal/bootstrap/loaders:299:27
+      1    6.3%        LazyCompile: ~module.exports /home/laura/Documentos/coder/resueltos/16-logs/node_modules/express/lib/router/index.js:43:38
+      1  100.0%          Script: ~<anonymous> file:///home/laura/Documentos/coder/resueltos/16-logs/src/routes/indexRoutes.js:1:1
+      1  100.0%            /home/laura/.nvm/versions/node/v16.15.1/bin/node
+      1    6.3%        LazyCompile: ~getStack /home/laura/Documentos/coder/resueltos/16-logs/node_modules/depd/index.js:381:19
+      1  100.0%          LazyCompile: ~depd /home/laura/Documentos/coder/resueltos/16-logs/node_modules/depd/index.js:103:15
+      1  100.0%            Function: ~<anonymous> /home/laura/Documentos/coder/resueltos/16-logs/node_modules/body-parser/index.js:1:1
+      1    6.3%        LazyCompile: ~getCLIOptionsFromBinding node:internal/options:18:34
+      1  100.0%          LazyCompile: ~getOptionValue node:internal/options:39:24
+      1  100.0%            LazyCompile: ~addReadOnlyProcessAlias node:internal/bootstrap/pre_execution:130:33
+      1    6.3%        LazyCompile: ~finalizeResolution node:internal/modules/esm/resolve:397:28
+      1  100.0%          LazyCompile: ~moduleResolve node:internal/modules/esm/resolve:988:23
+      1  100.0%            LazyCompile: ~defaultResolve node:internal/modules/esm/resolve:1128:30
+      1    6.3%        LazyCompile: ~deprecate node:internal/util:96:19
+      1  100.0%          Function: ~<anonymous> node:dgram:1:1
+      1  100.0%            Function: ^compileForInternalLoader node:internal/bootstrap/loaders:299:27
+      1    6.3%        Function: ^stat node:internal/modules/cjs/loader:151:14
+      1  100.0%          Function: ^Module._findPath node:internal/modules/cjs/loader:494:28
+      1  100.0%            Function: ^Module._resolveFilename node:internal/modules/cjs/loader:848:35
+      1    6.3%        Function: ^removeColors node:internal/util:76:22
+      1  100.0%          Function: ^isBelowBreakLength node:internal/util/inspect:1878:28
+      1  100.0%            Function: ^reduceToSingleString node:internal/util/inspect:1902:30
+      1    6.3%        Function: ^readPackage node:internal/modules/cjs/loader:290:21
+      1  100.0%          Function: ^resolveExports node:internal/modules/cjs/loader:472:24
+      1  100.0%            Function: ^Module._findPath node:internal/modules/cjs/loader:494:28
+      1    6.3%        Function: ^header /home/laura/Documentos/coder/resueltos/16-logs/node_modules/express/lib/response.js:777:29
+      1  100.0%          Function: ^json /home/laura/Documentos/coder/resueltos/16-logs/node_modules/express/lib/response.js:250:25
+      1  100.0%            Function: ^send /home/laura/Documentos/coder/resueltos/16-logs/node_modules/express/lib/response.js:111:25
+      1    6.3%        Function: ^checkInvalidHeaderChar node:_http_common:232:32
+      1  100.0%          Function: ^<anonymous> node:_http_outgoing:564:45
+      1  100.0%            Function: ^setHeader node:_http_outgoing:574:57
+      9    2.1%      LazyCompile: ~compileFunction node:vm:308:25
+      9  100.0%        LazyCompile: ~wrapSafe node:internal/modules/cjs/loader:1017:18
+      9  100.0%          LazyCompile: ~Module._compile node:internal/modules/cjs/loader:1059:37
+      9  100.0%            LazyCompile: ~Module._extensions..js node:internal/modules/cjs/loader:1114:37
+      6    1.4%      Function: ^stat node:internal/modules/cjs/loader:151:14
+      5   83.3%        Function: ^tryFile node:internal/modules/cjs/loader:384:17
+      5  100.0%          Function: ^tryExtensions node:internal/modules/cjs/loader:400:23
+      4   80.0%            Function: ^Module._findPath node:internal/modules/cjs/loader:494:28
+      1   20.0%            LazyCompile: ~Module._findPath node:internal/modules/cjs/loader:494:28
+      1   16.7%        Function: ^Module._findPath node:internal/modules/cjs/loader:494:28
+      1  100.0%          Function: ^Module._resolveFilename node:internal/modules/cjs/loader:848:35
+      1  100.0%            Function: ^Module._load node:internal/modules/cjs/loader:757:24
+      5    1.1%      Function: ^realpathSync node:fs:2425:22
+      5  100.0%        Function: ^toRealPath node:internal/modules/cjs/loader:393:20
+      4   80.0%          Function: ^tryFile node:internal/modules/cjs/loader:384:17
+      2   50.0%            Function: ^tryExtensions node:internal/modules/cjs/loader:400:23
+      1   25.0%            LazyCompile: ~tryPackage node:internal/modules/cjs/loader:338:20
+      1   25.0%            Function: ^tryPackage node:internal/modules/cjs/loader:338:20
+      1   20.0%          Function: ^Module._findPath node:internal/modules/cjs/loader:494:28
+      1  100.0%            Function: ^Module._resolveFilename node:internal/modules/cjs/loader:848:35
+
+     63    7.7%  epoll_pwait
+
+     55    6.7%  __write
+     44   80.0%    /home/laura/.nvm/versions/node/v16.15.1/bin/node
+      3    6.8%      LazyCompile: ~prepareMainThreadExecution node:internal/bootstrap/pre_execution:28:36
+      3  100.0%        Function: ~<anonymous> node:internal/main/run_main_module:1:1
+      2    4.5%      LazyCompile: ~send /home/laura/Documentos/coder/resueltos/16-logs/node_modules/express/lib/response.js:111:25
+      2  100.0%        LazyCompile: ~json /home/laura/Documentos/coder/resueltos/16-logs/node_modules/express/lib/response.js:250:25
+      2  100.0%          LazyCompile: ~send /home/laura/Documentos/coder/resueltos/16-logs/node_modules/express/lib/response.js:111:25
+      2  100.0%            LazyCompile: ~<anonymous> file:///home/laura/Documentos/coder/resueltos/16-logs/src/routes/indexRoutes.js:22:21
+      2    4.5%      /home/laura/.nvm/versions/node/v16.15.1/bin/node
+      1   50.0%        LazyCompile: ~run node:internal/modules/esm/module_job:193:12
+      1  100.0%          /home/laura/.nvm/versions/node/v16.15.1/bin/node
+      1   50.0%        Function: ~<anonymous> /home/laura/Documentos/coder/resueltos/16-logs/node_modules/@colors/colors/lib/colors.js:96:23
+      1  100.0%          Function: ~<anonymous> /home/laura/Documentos/coder/resueltos/16-logs/node_modules/@colors/colors/lib/colors.js:1:1
+      1  100.0%            Function: ^Module._compile node:internal/modules/cjs/loader:1059:37
+      1    2.3%      LazyCompile: ~wrapSafe node:internal/modules/cjs/loader:1017:18
+      1  100.0%        LazyCompile: ~Module._compile node:internal/modules/cjs/loader:1059:37
+      1  100.0%          LazyCompile: ~Module._extensions..js node:internal/modules/cjs/loader:1114:37
+      1  100.0%            LazyCompile: ~Module.load node:internal/modules/cjs/loader:969:33
+      1    2.3%      LazyCompile: ~tryExtensions node:internal/modules/cjs/loader:400:23
+      1  100.0%        LazyCompile: ~Module._findPath node:internal/modules/cjs/loader:494:28
+      1  100.0%          LazyCompile: ~Module._resolveFilename node:internal/modules/cjs/loader:848:35
+      1  100.0%            LazyCompile: ~<anonymous> node:internal/modules/esm/translators:233:36
+      1    2.3%      LazyCompile: ~toRealPath node:internal/modules/cjs/loader:393:20
+      1  100.0%        LazyCompile: ~Module._findPath node:internal/modules/cjs/loader:494:28
+      1  100.0%          LazyCompile: ~resolveMainPath node:internal/modules/run_main:15:25
+      1  100.0%            LazyCompile: ~executeUserEntryPoint node:internal/modules/run_main:70:31
+      1    2.3%      LazyCompile: ~socketOnDrain node:_http_server:564:23
+      1  100.0%        Function: ^updateOutgoingData node:_http_server:559:28
+      1  100.0%          Function: ^_flushOutput node:_http_outgoing:951:63
+      1  100.0%            Function: ^_writeRaw node:_http_outgoing:344:19
+      1    2.3%      LazyCompile: ~shift node:internal/fixed_queue:80:8
+      1  100.0%        LazyCompile: ~shift node:internal/fixed_queue:108:8
+      1  100.0%          LazyCompile: ~processTicksAndRejections node:internal/process/task_queues:68:35
+      1    2.3%      LazyCompile: ~selectColor /home/laura/Documentos/coder/resueltos/16-logs/node_modules/debug/src/debug.js:44:21
+      1  100.0%        LazyCompile: ~createDebug /home/laura/Documentos/coder/resueltos/16-logs/node_modules/debug/src/debug.js:63:21
+      1  100.0%          Function: ~<anonymous> /home/laura/Documentos/coder/resueltos/16-logs/node_modules/express/lib/router/route.js:1:1
+      1  100.0%            LazyCompile: ~Module._compile node:internal/modules/cjs/loader:1059:37
+      1    2.3%      LazyCompile: ~removeListener node:events:689:28
+      1  100.0%        LazyCompile: ~Readable.removeListener node:internal/streams/readable:904:45
+      1  100.0%          LazyCompile: ~detachSocket node:_http_server:249:62
+      1  100.0%            LazyCompile: ~resOnFinish node:_http_server:793:21
+      1    2.3%      LazyCompile: ~read node:internal/modules/package_json_reader:16:14
+      1  100.0%        LazyCompile: ~readPackage node:internal/modules/cjs/loader:290:21
+      1  100.0%          LazyCompile: ~resolveExports node:internal/modules/cjs/loader:472:24
+      1  100.0%            LazyCompile: ~Module._findPath node:internal/modules/cjs/loader:494:28
+      1    2.3%      LazyCompile: ~processPromiseRejections node:internal/process/promises:211:34
+      1  100.0%        Function: ^processTicksAndRejections node:internal/process/task_queues:68:35
+      1    2.3%      LazyCompile: ~parserOnIncoming node:_http_server:857:26
+      1  100.0%        LazyCompile: ~parserOnHeadersComplete node:_http_common:77:33
+      1    2.3%      LazyCompile: ~once node:events:660:44
+      1  100.0%        LazyCompile: ~TransportStream /home/laura/Documentos/coder/resueltos/16-logs/node_modules/winston-transport/index.js:18:66
+      1  100.0%          LazyCompile: ~Console /home/laura/Documentos/coder/resueltos/16-logs/node_modules/winston/lib/winston/transports/console.js:26:14
+      1  100.0%            LazyCompile: ~loggerDev file:///home/laura/Documentos/coder/resueltos/16-logs/src/utils/logger.js:17:19
+      1    2.3%      LazyCompile: ~moduleProvider node:internal/modules/esm/loader:322:28
+      1  100.0%        /home/laura/.nvm/versions/node/v16.15.1/bin/node
+      1    2.3%      LazyCompile: ~log node:internal/console/constructor:359:6
+      1  100.0%        /home/laura/.nvm/versions/node/v16.15.1/bin/node
+      1  100.0%          Script: ~<anonymous> file:///home/laura/Documentos/coder/resueltos/16-logs/src/utils/getRandom.js:1:1
+      1  100.0%            /home/laura/.nvm/versions/node/v16.15.1/bin/node
+      1    2.3%      LazyCompile: ~listenInCluster node:net:1410:25
+      1  100.0%        LazyCompile: ~Server.listen node:net:1453:35
+      1  100.0%          LazyCompile: ~listen /home/laura/Documentos/coder/resueltos/16-logs/node_modules/express/lib/application.js:633:29
+      1  100.0%            Script: ~<anonymous> file:///home/laura/Documentos/coder/resueltos/16-logs/server.js:1:1
+      1    2.3%      LazyCompile: ~lazyrouter /home/laura/Documentos/coder/resueltos/16-logs/node_modules/express/lib/application.js:144:37
+      1  100.0%        LazyCompile: ~use /home/laura/Documentos/coder/resueltos/16-logs/node_modules/express/lib/application.js:194:23
+      1  100.0%          Script: ~<anonymous> file:///home/laura/Documentos/coder/resueltos/16-logs/server.js:1:1
+      1  100.0%            /home/laura/.nvm/versions/node/v16.15.1/bin/node
+      1    2.3%      LazyCompile: ~getStderr node:internal/bootstrap/switches/is_main_thread:137:19
+      1  100.0%        Function: ~<anonymous> /home/laura/Documentos/coder/resueltos/16-logs/node_modules/debug/src/node.js:1:1
+      1  100.0%          LazyCompile: ~Module._compile node:internal/modules/cjs/loader:1059:37
+      1  100.0%            LazyCompile: ~Module._extensions..js node:internal/modules/cjs/loader:1114:37
+      1    2.3%      LazyCompile: ~getSourceMapsEnabled node:internal/source_map/source_map_cache:43:30
+      1  100.0%        LazyCompile: ~maybeCacheSourceMap node:internal/source_map/source_map_cache:74:29
+      1  100.0%          LazyCompile: ~moduleStrategy node:internal/modules/esm/translators:112:56
+      1  100.0%            LazyCompile: ~moduleProvider node:internal/modules/esm/loader:322:28
+      1    2.3%      LazyCompile: ~get node:internal/streams/writable:837:8
+      1  100.0%        LazyCompile: ~socketOnDrain node:_http_server:564:23
+      1  100.0%          LazyCompile: ~updateOutgoingData node:_http_server:559:28
+      1  100.0%            LazyCompile: ~_flushOutput node:_http_outgoing:951:63
+      1    2.3%      LazyCompile: ~formatPrimitive node:internal/util/inspect:1519:25
+      1  100.0%        LazyCompile: ~formatValue node:internal/util/inspect:745:21
+      1  100.0%          LazyCompile: ~formatProperty node:internal/util/inspect:1810:24
+      1  100.0%            LazyCompile: ~formatRaw node:internal/util/inspect:820:19
+      1    2.3%      LazyCompile: ~emit node:events:475:44
+      1  100.0%        LazyCompile: ~Readable.pipe /home/laura/Documentos/coder/resueltos/16-logs/node_modules/winston/node_modules/readable-stream/lib/_stream_readable.js:608:36
+      1  100.0%          LazyCompile: ~add /home/laura/Documentos/coder/resueltos/16-logs/node_modules/winston/lib/winston/logger.js:344:6
+      1  100.0%            LazyCompile: ~<anonymous> /home/laura/Documentos/coder/resueltos/16-logs/node_modules/winston/lib/winston/logger.js:124:26
+      1    2.3%      LazyCompile: ~doWrite node:internal/streams/writable:398:17
+      1  100.0%        LazyCompile: ~clearBuffer node:internal/streams/writable:529:21
+      1  100.0%          LazyCompile: ~Writable.uncork node:internal/streams/writable:341:37
+      1  100.0%            LazyCompile: ~end node:_http_outgoing:833:45
+      1    2.3%      LazyCompile: ~createServer node:http:58:22
+      1  100.0%        LazyCompile: ~listen /home/laura/Documentos/coder/resueltos/16-logs/node_modules/express/lib/application.js:633:29
+      1  100.0%          Script: ~<anonymous> file:///home/laura/Documentos/coder/resueltos/16-logs/server.js:1:1
+      1  100.0%            /home/laura/.nvm/versions/node/v16.15.1/bin/node
+      1    2.3%      LazyCompile: ~compile /home/laura/Documentos/coder/resueltos/16-logs/node_modules/proxy-addr/index.js:84:18
+      1  100.0%        LazyCompile: ~exports.compileTrust /home/laura/Documentos/coder/resueltos/16-logs/node_modules/express/lib/utils.js:217:32
+      1  100.0%          LazyCompile: ~set /home/laura/Documentos/coder/resueltos/16-logs/node_modules/express/lib/application.js:359:23
+      1  100.0%            LazyCompile: ~defaultConfiguration /home/laura/Documentos/coder/resueltos/16-logs/node_modules/express/lib/application.js:77:57
+      1    2.3%      LazyCompile: ~afterWrite /home/laura/Documentos/coder/resueltos/16-logs/node_modules/winston-transport/node_modules/readable-stream/lib/_stream_writable.js:466:20
+      1  100.0%        Function: ^processTicksAndRejections node:internal/process/task_queues:68:35
+      1    2.3%      LazyCompile: ~_createStream /home/laura/Documentos/coder/resueltos/16-logs/node_modules/winston/lib/winston/transports/file.js:542:16
+      1  100.0%        LazyCompile: ~<anonymous> /home/laura/Documentos/coder/resueltos/16-logs/node_modules/winston/lib/winston/transports/file.js:396:15
+      1  100.0%          LazyCompile: ~<anonymous> /home/laura/Documentos/coder/resueltos/16-logs/node_modules/winston/lib/winston/transports/file.js:423:23
+      1  100.0%            LazyCompile: ~<anonymous> node:fs:197:10
+      1    2.3%      LazyCompile: ~Timeout.refresh node:internal/timers:210:37
+      1  100.0%        Function: ^_unrefTimer node:net:431:52
+      1  100.0%          LazyCompile: ~onParserExecute node:_http_server:639:25
+      1    2.3%      LazyCompile: ~Route /home/laura/Documentos/coder/resueltos/16-logs/node_modules/express/lib/router/route.js:43:15
+      1  100.0%        LazyCompile: ~route /home/laura/Documentos/coder/resueltos/16-logs/node_modules/express/lib/router/index.js:502:29
+      1  100.0%          LazyCompile: ~proto.<computed> /home/laura/Documentos/coder/resueltos/16-logs/node_modules/express/lib/router/index.js:519:27
+      1  100.0%            Script: ~<anonymous> file:///home/laura/Documentos/coder/resueltos/16-logs/src/routes/indexRoutes.js:1:1
+      1    2.3%      LazyCompile: ~Readable.read /home/laura/Documentos/coder/resueltos/16-logs/node_modules/winston/node_modules/readable-stream/lib/_stream_readable.js:392:36
+      1  100.0%        LazyCompile: ~maybeReadMore_ /home/laura/Documentos/coder/resueltos/16-logs/node_modules/winston/node_modules/readable-stream/lib/_stream_readable.js:565:24
+      1  100.0%          Function: ^processTicksAndRejections node:internal/process/task_queues:68:35
+      1    2.3%      LazyCompile: ~Module.require node:internal/modules/cjs/loader:997:36
+      1  100.0%        LazyCompile: ~require node:internal/modules/cjs/helpers:101:31
+      1  100.0%          Function: ~<anonymous> /home/laura/Documentos/coder/resueltos/16-logs/node_modules/finalhandler/index.js:1:1
+      1  100.0%            LazyCompile: ~Module._compile node:internal/modules/cjs/loader:1059:37
+      1    2.3%      LazyCompile: ~File /home/laura/Documentos/coder/resueltos/16-logs/node_modules/winston/lib/winston/transports/file.js:33:14
+      1  100.0%        LazyCompile: ~loggerDev file:///home/laura/Documentos/coder/resueltos/16-logs/src/utils/logger.js:17:19
+      1  100.0%          Script: ~<anonymous> file:///home/laura/Documentos/coder/resueltos/16-logs/src/utils/logger.js:1:1
+      1  100.0%            /home/laura/.nvm/versions/node/v16.15.1/bin/node
+      1    2.3%      LazyCompile: ~<anonymous> file:///home/laura/Documentos/coder/resueltos/16-logs/src/routes/indexRoutes.js:22:21
+      1  100.0%        Function: ^handle /home/laura/Documentos/coder/resueltos/16-logs/node_modules/express/lib/router/layer.js:86:49
+      1  100.0%          LazyCompile: ~next /home/laura/Documentos/coder/resueltos/16-logs/node_modules/express/lib/router/route.js:116:16
+      1  100.0%            LazyCompile: ~dispatch /home/laura/Documentos/coder/resueltos/16-logs/node_modules/express/lib/router/route.js:98:45
+      1    2.3%      LazyCompile: ~<anonymous> /home/laura/Documentos/coder/resueltos/16-logs/node_modules/@colors/colors/lib/colors.js:176:39
+      1  100.0%        /home/laura/.nvm/versions/node/v16.15.1/bin/node
+      1  100.0%          LazyCompile: ~init /home/laura/Documentos/coder/resueltos/16-logs/node_modules/@colors/colors/lib/colors.js:174:14
+      1  100.0%            Function: ~<anonymous> /home/laura/Documentos/coder/resueltos/16-logs/node_modules/@colors/colors/lib/colors.js:1:1
+      1    2.3%      Function: ~<anonymous> node:internal/main/run_main_module:1:1
+      1    2.3%      Function: ~<anonymous> node:internal/fs/rimraf:1:1
+      1  100.0%        LazyCompile: ~compileForInternalLoader node:internal/bootstrap/loaders:299:27
+      1  100.0%          LazyCompile: ~nativeModuleRequire node:internal/bootstrap/loaders:332:29
+      1  100.0%            Function: ~<anonymous> node:internal/fs/promises:1:1
+      1    2.3%      Function: ~<anonymous> node:internal/fs/promises:1:1
+      1  100.0%        LazyCompile: ~compileForInternalLoader node:internal/bootstrap/loaders:299:27
+      1  100.0%          LazyCompile: ~nativeModuleRequire node:internal/bootstrap/loaders:332:29
+      1  100.0%            Function: ~<anonymous> node:internal/modules/esm/get_source:1:1
+      1    2.3%      Function: ~<anonymous> /home/laura/Documentos/coder/resueltos/16-logs/node_modules/winston/lib/winston.js:1:1
+      1  100.0%        Function: ^Module._compile node:internal/modules/cjs/loader:1059:37
+      1  100.0%          Function: ^Module._extensions..js node:internal/modules/cjs/loader:1114:37
+      1  100.0%            Function: ^Module.load node:internal/modules/cjs/loader:969:33
+      1    2.3%      Function: ~<anonymous> /home/laura/Documentos/coder/resueltos/16-logs/node_modules/mime/mime.js:1:1
+      1  100.0%        Function: ^Module._compile node:internal/modules/cjs/loader:1059:37
+      1  100.0%          LazyCompile: ~Module._extensions..js node:internal/modules/cjs/loader:1114:37
+      1  100.0%            Function: ^Module.load node:internal/modules/cjs/loader:969:33
+
+     30    3.7%  fwrite
+     26   86.7%    /home/laura/.nvm/versions/node/v16.15.1/bin/node
+      4   15.4%      LazyCompile: ~value node:internal/console/constructor:321:20
+      4  100.0%        LazyCompile: ~log node:internal/console/constructor:359:6
+      4  100.0%          /home/laura/.nvm/versions/node/v16.15.1/bin/node
+      4  100.0%            Script: ~<anonymous> file:///home/laura/Documentos/coder/resueltos/16-logs/src/utils/getRandom.js:1:1
+      2    7.7%      LazyCompile: ~patchProcessObject node:internal/bootstrap/pre_execution:89:28
+      2  100.0%        LazyCompile: ~prepareMainThreadExecution node:internal/bootstrap/pre_execution:28:36
+      2  100.0%          Function: ~<anonymous> node:internal/main/run_main_module:1:1
+      2    7.7%      LazyCompile: ~onParseError node:internal/url:552:22
+      2  100.0%        /home/laura/.nvm/versions/node/v16.15.1/bin/node
+      2  100.0%          Function: ^URL node:internal/url:621:14
+      2  100.0%            LazyCompile: ~defaultResolve node:internal/modules/esm/resolve:1128:30
+      2    7.7%      Function: ~<anonymous> node:internal/fs/rimraf:1:1
+      2  100.0%        LazyCompile: ~compileForInternalLoader node:internal/bootstrap/loaders:299:27
+      2  100.0%          LazyCompile: ~nativeModuleRequire node:internal/bootstrap/loaders:332:29
+      2  100.0%            Function: ~<anonymous> node:internal/fs/promises:1:1
+      1    3.8%      LazyCompile: ~wrapRounded /home/laura/Documentos/coder/resueltos/16-logs/node_modules/color-convert/index.js:29:21
+      1  100.0%        LazyCompile: ~<anonymous> /home/laura/Documentos/coder/resueltos/16-logs/node_modules/color-convert/index.js:70:31
+      1  100.0%          /home/laura/.nvm/versions/node/v16.15.1/bin/node
+      1  100.0%            LazyCompile: ~<anonymous> /home/laura/Documentos/coder/resueltos/16-logs/node_modules/color-convert/index.js:61:25
+      1    3.8%      LazyCompile: ~toRealPath node:internal/modules/cjs/loader:393:20
+      1  100.0%        LazyCompile: ~Module._findPath node:internal/modules/cjs/loader:494:28
+      1  100.0%          LazyCompile: ~resolveMainPath node:internal/modules/run_main:15:25
+      1  100.0%            LazyCompile: ~executeUserEntryPoint node:internal/modules/run_main:70:31
+      1    3.8%      LazyCompile: ~setupWarningHandler node:internal/bootstrap/pre_execution:142:29
+      1  100.0%        LazyCompile: ~prepareMainThreadExecution node:internal/bootstrap/pre_execution:28:36
+      1  100.0%          Function: ~<anonymous> node:internal/main/run_main_module:1:1
+      1    3.8%      LazyCompile: ~realpathSync node:fs:2425:22
+      1  100.0%        LazyCompile: ~toRealPath node:internal/modules/cjs/loader:393:20
+      1  100.0%          LazyCompile: ~Module._findPath node:internal/modules/cjs/loader:494:28
+      1  100.0%            LazyCompile: ~resolveMainPath node:internal/modules/run_main:15:25
+      1    3.8%      LazyCompile: ~processTicksAndRejections node:internal/process/task_queues:68:35
+      1    3.8%      LazyCompile: ~prepareMainThreadExecution node:internal/bootstrap/pre_execution:28:36
+      1  100.0%        Function: ~<anonymous> node:internal/main/run_main_module:1:1
+      1    3.8%      LazyCompile: ~fastparse /home/laura/Documentos/coder/resueltos/16-logs/node_modules/parseurl/index.js:95:20
+      1  100.0%        LazyCompile: ~parseurl /home/laura/Documentos/coder/resueltos/16-logs/node_modules/parseurl/index.js:35:19
+      1  100.0%          LazyCompile: ~getPathname /home/laura/Documentos/coder/resueltos/16-logs/node_modules/express/lib/router/index.js:537:21
+      1  100.0%            LazyCompile: ~next /home/laura/Documentos/coder/resueltos/16-logs/node_modules/express/lib/router/index.js:177:16
+      1    3.8%      LazyCompile: ~etag /home/laura/Documentos/coder/resueltos/16-logs/node_modules/etag/index.js:70:15
+      1  100.0%        LazyCompile: ~generateETag /home/laura/Documentos/coder/resueltos/16-logs/node_modules/express/lib/utils.js:273:32
+      1  100.0%          LazyCompile: ~send /home/laura/Documentos/coder/resueltos/16-logs/node_modules/express/lib/response.js:111:25
+      1  100.0%            Function: ^json /home/laura/Documentos/coder/resueltos/16-logs/node_modules/express/lib/response.js:250:25
+      1    3.8%      LazyCompile: ~enable /home/laura/Documentos/coder/resueltos/16-logs/node_modules/express/lib/application.js:469:29
+      1  100.0%        LazyCompile: ~defaultConfiguration /home/laura/Documentos/coder/resueltos/16-logs/node_modules/express/lib/application.js:77:57
+      1  100.0%          LazyCompile: ~init /home/laura/Documentos/coder/resueltos/16-logs/node_modules/express/lib/application.js:64:25
+      1  100.0%            LazyCompile: ~createApplication /home/laura/Documentos/coder/resueltos/16-logs/node_modules/express/lib/express.js:37:27
+      1    3.8%      LazyCompile: ~createWritableStdioStream node:internal/bootstrap/switches/is_main_thread:41:35
+      1  100.0%        LazyCompile: ~getStderr node:internal/bootstrap/switches/is_main_thread:137:19
+      1  100.0%          Function: ~<anonymous> /home/laura/Documentos/coder/resueltos/16-logs/node_modules/debug/src/node.js:1:1
+      1  100.0%            LazyCompile: ~Module._compile node:internal/modules/cjs/loader:1059:37
+      1    3.8%      LazyCompile: ~addAddress node:internal/blocklist:60:13
+      1  100.0%        Function: ~<anonymous> node:internal/modules/esm/fetch_module:1:1
+      1  100.0%          LazyCompile: ~compileForInternalLoader node:internal/bootstrap/loaders:299:27
+      1  100.0%            LazyCompile: ~nativeModuleRequire node:internal/bootstrap/loaders:332:29
+      1    3.8%      LazyCompile: ~ServerResponse node:_http_server:178:24
+      1  100.0%        LazyCompile: ~parserOnIncoming node:_http_server:857:26
+      1  100.0%          LazyCompile: ~parserOnHeadersComplete node:_http_common:77:33
+      1    3.8%      LazyCompile: ~<anonymous> file:///home/laura/Documentos/coder/resueltos/16-logs/src/routes/indexRoutes.js:22:21
+      1  100.0%        LazyCompile: ~handle /home/laura/Documentos/coder/resueltos/16-logs/node_modules/express/lib/router/layer.js:86:49
+      1  100.0%          LazyCompile: ~next /home/laura/Documentos/coder/resueltos/16-logs/node_modules/express/lib/router/route.js:116:16
+      1  100.0%            LazyCompile: ~dispatch /home/laura/Documentos/coder/resueltos/16-logs/node_modules/express/lib/router/route.js:98:45
+      1    3.8%      Function: ~<anonymous> node:internal/streams/lazy_transform:1:1
+      1  100.0%        Function: ^compileForInternalLoader node:internal/bootstrap/loaders:299:27
+      1  100.0%          Function: ^nativeModuleRequire node:internal/bootstrap/loaders:332:29
+      1  100.0%            Function: ~<anonymous> node:internal/crypto/cipher:1:1
+      1    3.8%      Function: ~<anonymous> node:internal/fs/promises:1:1
+      1  100.0%        LazyCompile: ~compileForInternalLoader node:internal/bootstrap/loaders:299:27
+      1  100.0%          LazyCompile: ~nativeModuleRequire node:internal/bootstrap/loaders:332:29
+      1  100.0%            Function: ~<anonymous> node:internal/modules/esm/get_source:1:1
+      1    3.8%      Function: ~<anonymous> /home/laura/Documentos/coder/resueltos/16-logs/node_modules/@dabh/diagnostics/node/development.js:1:1
+      1  100.0%        Function: ^Module._compile node:internal/modules/cjs/loader:1059:37
+      1  100.0%          Function: ^Module._extensions..js node:internal/modules/cjs/loader:1114:37
+      1  100.0%            Function: ^Module.load node:internal/modules/cjs/loader:969:33
+
+     23    2.8%  /usr/lib/x86_64-linux-gnu/libc-2.31.so
+     16   69.6%    /home/laura/.nvm/versions/node/v16.15.1/bin/node
+      2   12.5%      /home/laura/.nvm/versions/node/v16.15.1/bin/node
+      1   50.0%        Function: ~<anonymous> node:zlib:1:1
+      1  100.0%          Function: ^compileForInternalLoader node:internal/bootstrap/loaders:299:27
+      1  100.0%            Function: ^compileForPublicLoader node:internal/bootstrap/loaders:246:25
+      1   50.0%        Function: ^readPackage node:internal/modules/cjs/loader:290:21
+      1  100.0%          Function: ^readPackageScope node:internal/modules/cjs/loader:321:26
+      1  100.0%            Function: ^Module._extensions..js node:internal/modules/cjs/loader:1114:37
+      1    6.3%      LazyCompile: ~stringify node:internal/modules/esm/translators:90:19
+      1  100.0%        LazyCompile: ~moduleStrategy node:internal/modules/esm/translators:112:56
+      1  100.0%          LazyCompile: ~moduleProvider node:internal/modules/esm/loader:322:28
+      1  100.0%            /home/laura/.nvm/versions/node/v16.15.1/bin/node
+      1    6.3%      LazyCompile: ~set pathname node:internal/url:887:15
+      1  100.0%        /home/laura/.nvm/versions/node/v16.15.1/bin/node
+      1  100.0%          LazyCompile: ~pathToFileURL node:internal/url:1458:23
+      1  100.0%            LazyCompile: ~<anonymous> node:internal/modules/run_main:51:29
+      1    6.3%      LazyCompile: ~run node:internal/modules/esm/module_job:193:12
+      1  100.0%        LazyCompile: ~<anonymous> node:internal/modules/esm/loader:381:15
+      1    6.3%      LazyCompile: ~patchProcessObject node:internal/bootstrap/pre_execution:89:28
+      1  100.0%        LazyCompile: ~prepareMainThreadExecution node:internal/bootstrap/pre_execution:28:36
+      1  100.0%          Function: ~<anonymous> node:internal/main/run_main_module:1:1
+      1    6.3%      LazyCompile: ~legacyMainResolve node:internal/modules/esm/resolve:304:27
+      1  100.0%        LazyCompile: ~packageResolve node:internal/modules/esm/resolve:897:24
+      1  100.0%          LazyCompile: ~moduleResolve node:internal/modules/esm/resolve:988:23
+      1  100.0%            LazyCompile: ~defaultResolve node:internal/modules/esm/resolve:1128:30
+      1    6.3%      LazyCompile: ~createHash node:crypto:129:20
+      1  100.0%        LazyCompile: ~entitytag /home/laura/Documentos/coder/resueltos/16-logs/node_modules/etag/index.js:39:20
+      1  100.0%          LazyCompile: ~etag /home/laura/Documentos/coder/resueltos/16-logs/node_modules/etag/index.js:70:15
+      1  100.0%            LazyCompile: ~generateETag /home/laura/Documentos/coder/resueltos/16-logs/node_modules/express/lib/utils.js:273:32
+      1    6.3%      LazyCompile: ~Server.listen node:net:1453:35
+      1  100.0%        LazyCompile: ~listen /home/laura/Documentos/coder/resueltos/16-logs/node_modules/express/lib/application.js:633:29
+      1  100.0%          Script: ~<anonymous> file:///home/laura/Documentos/coder/resueltos/16-logs/server.js:1:1
+      1  100.0%            /home/laura/.nvm/versions/node/v16.15.1/bin/node
+      1    6.3%      LazyCompile: ~Readable.read node:internal/streams/readable:394:35
+      1  100.0%        LazyCompile: ~Socket.read node:net:661:33
+      1  100.0%          LazyCompile: ~Socket node:net:285:16
+      1  100.0%            LazyCompile: ~onconnection node:net:1587:22
+      1    6.3%      LazyCompile: ~ModuleJob node:internal/modules/esm/module_job:56:14
+      1  100.0%        LazyCompile: ~#createModuleJob node:internal/modules/esm/loader:321:19
+      1  100.0%          LazyCompile: ~getModuleJob node:internal/modules/esm/loader:285:21
+      1  100.0%            /home/laura/.nvm/versions/node/v16.15.1/bin/node
+      1    6.3%      LazyCompile: ~Duplex node:internal/streams/duplex:52:16
+      1  100.0%        LazyCompile: ~Socket node:net:285:16
+      1  100.0%          LazyCompile: ~WriteStream node:tty:85:21
+      1  100.0%            LazyCompile: ~createWritableStdioStream node:internal/bootstrap/switches/is_main_thread:41:35
+      1    6.3%      LazyCompile: ~<anonymous> file:///home/laura/Documentos/coder/resueltos/16-logs/server.js:30:35
+      1  100.0%        LazyCompile: ~onceWrapper node:events:636:21
+      1  100.0%          LazyCompile: ~emit node:events:475:44
+      1  100.0%            LazyCompile: ~emitListeningNT node:net:1403:25
+      1    6.3%      LazyCompile: ~<anonymous> /home/laura/Documentos/coder/resueltos/16-logs/node_modules/logform/json.js:26:25
+      1  100.0%        LazyCompile: ~_transform /home/laura/Documentos/coder/resueltos/16-logs/node_modules/winston/lib/winston/logger.js:275:13
+      1  100.0%          LazyCompile: ~Transform._read /home/laura/Documentos/coder/resueltos/16-logs/node_modules/winston/node_modules/readable-stream/lib/_stream_transform.js:171:38
+      1  100.0%            LazyCompile: ~Transform._write /home/laura/Documentos/coder/resueltos/16-logs/node_modules/winston/node_modules/readable-stream/lib/_stream_transform.js:156:39
+      1    6.3%      Function: ~<anonymous> node:internal/modules/cjs/helpers:1:1
+      1  100.0%        LazyCompile: ~compileForInternalLoader node:internal/bootstrap/loaders:299:27
+      1  100.0%          LazyCompile: ~nativeModuleRequire node:internal/bootstrap/loaders:332:29
+      1  100.0%            Function: ~<anonymous> node:internal/source_map/source_map_cache:1:1
+      1    6.3%      Function: ^readPackage node:internal/modules/cjs/loader:290:21
+      1  100.0%        Function: ^resolveExports node:internal/modules/cjs/loader:472:24
+      1  100.0%          Function: ^Module._findPath node:internal/modules/cjs/loader:494:28
+      1  100.0%            Function: ^Module._resolveFilename node:internal/modules/cjs/loader:848:35
+
